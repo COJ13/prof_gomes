@@ -22,8 +22,6 @@ CREATE TABLE turma
     semestre INT UNIQUE,
     fk_professor_matriculaprofessor INT    
 );
-/* ALTERANDO O NOME DE UMA COLUNA NA TABELA */
-ALTER TABLE turma CHANGE semestre num_turma INT;
 
 CREATE TABLE professor
 (
@@ -53,12 +51,21 @@ ALTER TABLE aluno_turma ADD CONSTRAINT FK_aluno_turma_2
     REFERENCES turma (coddisciplina)
     ON DELETE SET NULL;
 
+
+/* ----- COMANDOS DML - Data Manipulation Language ----- */
+/* INSERINDO DADOS NA TABELA TURMA */
+INSERT INTO turma (sala, num_turma) VALUES (201, 1), (202,2);
+
+/* ALTERANDO O NOME DE UMA COLUNA NA TABELA */
+ALTER TABLE turma CHANGE semestre num_turma INT;
+
+/* ADICIONANDO UMA NOVA COLUNA A TABELA */
+ALTER TABLE turma ADD nomedisciplina VARCHAR(30) NULL;
+
+
+/* COMANDOS AVULSOS */
 show tables;
 describe professor;
 describe turma;
 describe aluno;
 SELECT * FROM turma;
-
-/* ----- COMANDOS DML - Data Manipulation Language ----- */
-/* INSERINDO DADOS NA TABELA TURMA */
-INSERT INTO turma (sala, num_turma) VALUES (201, 1), (202,2);
